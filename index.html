@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dash QR</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="qrcode.min.js"></script>
+    <style>
+        img,
+        input,
+        button {
+            display: block;
+            margin: 0 auto;
+            width: 500px;
+            font-size: 40px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="dash_logo.png" />
+    </div>
+    <div id="qrcode"></div>
+    <div>
+        <input id="addressInput" type="text" placeholder="Put Dash Address Here..." />
+        <button id="generateButton" onclick="generate()">Click to generate</button>
+    </div>
+    <script type="text/javascript">
+        function generate() {
+            var address = document.getElementById("addressInput").value,
+                qrcode = new QRCode("qrcode", {
+                    text: "dash:" + address,
+                    width: 500,
+                    height: 500,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            document.getElementById("addressInput").style.display = 'none';
+            document.getElementById("generateButton").style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
